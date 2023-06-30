@@ -70,7 +70,7 @@ function LandingPage() {
         }
       }
       const PORT = 3000;
-      fetch(`https://backend-catan.onrender.com/game`, {
+      fetch(`https://backend-oficial-catan.onrender.com/game`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ function Casilla_Player (props) {
     const getPlayerName = async () => {
         try {
             const PORT = 3000;
-            const response = await fetch(`https://backend-catan.onrender.com/players/playernamebyid/${player_id}`);
+            const response = await fetch(`https://backend-oficial-catan.onrender.com/players/playernamebyid/${player_id}`);
             const name = await response.text();
             setPlayer(name);
         } catch (error) {

@@ -19,16 +19,16 @@ function Inventario() {
       try {
         const PORT = 3000;
 
-        const response_game = await fetch(`https://backend-catan.onrender.com/game`);
+        const response_game = await fetch(`https://backend-oficial-catan.onrender.com/game`);
         const data_game = await response_game.json();
         const game_id = data_game.id;
-        const response_nombre = await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`);
+        const response_nombre = await fetch(`https://backend-oficial-catan.onrender.com/players/playername/${game_id}`);
         const json_response = await response_nombre.json();
         const mail = await json_response.mail;
         const token = getToken(mail);
 
 
-        const recursos = await fetch(`https://backend-catan.onrender.com/players/resources/${game_id}`, {
+        const recursos = await fetch(`https://backend-oficial-catan.onrender.com/players/resources/${game_id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

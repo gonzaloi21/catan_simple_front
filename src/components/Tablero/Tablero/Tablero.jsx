@@ -17,15 +17,15 @@ function Tablero() {
   useEffect(() => {
     const obtenerListaCasillas = async () => {
       try {
-        const response_game = await fetch(`https://backend-catan.onrender.com/game`);
+        const response_game = await fetch(`https://backend-oficial-catan.onrender.com/game`);
         const data_game = await response_game.json();
         const game_id = data_game.id;
-        const response_nombre = await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`);
+        const response_nombre = await fetch(`https://backend-oficial-catan.onrender.com/players/playername/${game_id}`);
         const json_response = await response_nombre.json();
         const mail = await json_response.mail;
         const token = getToken(mail);
 
-        const response = await fetch(`https://backend-catan.onrender.com/board/${game_id}`, {
+        const response = await fetch(`https://backend-oficial-catan.onrender.com/board/${game_id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
