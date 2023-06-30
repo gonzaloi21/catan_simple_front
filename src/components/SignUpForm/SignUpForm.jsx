@@ -31,7 +31,7 @@ const SignUpForm = () => {
               password: password,
             };
       
-            const response = await fetch('https://catan-simple-backend.onrender.com/signup', {
+            const response = await fetch('https://backend-catan.onrender.com/signup', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

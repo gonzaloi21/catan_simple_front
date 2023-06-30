@@ -15,10 +15,10 @@ function TablaEleccion(props) {
 
   const getTokenFromMail = async () => {
     const PORT = 3000;
-    const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
+    const response_game = await fetch(`https://backend-catan.onrender.com/game`);
     const data_game = await response_game.json();
     const game_id = data_game.id;
-    const response_nombre = await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`);
+    const response_nombre = await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`);
     const json_response = await response_nombre.json();
     const mail = await json_response.mail;
     const token = await getToken(mail);
@@ -32,13 +32,13 @@ useEffect(() => {
     try {
       const PORT = 3000;
 
-      const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
+      const response_game = await fetch(`https://backend-catan.onrender.com/game`);
       const data_game = await response_game.json();
       const game_id = data_game.id;
       const token = await getTokenFromMail();
 
 
-      const recursos = await fetch(`https://catan-simple-backend.onrender.com/players/resources/${game_id}`, {
+      const recursos = await fetch(`https://backend-catan.onrender.com/players/resources/${game_id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -69,7 +69,7 @@ useEffect(() => {
   const EnviarResources = async (resource2) => {
 
     const PORT = 3000;
-    const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
+    const response_game = await fetch(`https://backend-catan.onrender.com/game`);
     const data_game = await response_game.json();
     const game_id = data_game.id;
 
@@ -77,7 +77,7 @@ useEffect(() => {
     const resource1_codificado = encodeURIComponent(resource1);
     const resource2_codificado = encodeURIComponent(resource2);
 
-    let url = `https://catan-simple-backend.onrender.com/players/change`;
+    let url = `https://backend-catan.onrender.com/players/change`;
     const token = await getTokenFromMail();
 
     fetch(url, {

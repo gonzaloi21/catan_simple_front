@@ -15,7 +15,7 @@ const LoginForm = ({ onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const PORT = 3000;
-    axios.post(`https://catan-simple-backend.onrender.com/login`,
+    axios.post(`https://backend-catan.onrender.com/login`,
     { 
       mail: email, 
       password: password 

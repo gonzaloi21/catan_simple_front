@@ -38,7 +38,7 @@ function Tablero_completo() {
     try {
       const PORT = 3000;
       const game_id = await ObtenerGameID();
-      const response_nombre = await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`);
+      const response_nombre = await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`);
       const json_response = await response_nombre.json();
       const nombre = await json_response.name;
       const mail = await json_response.mail;
@@ -63,7 +63,7 @@ function Tablero_completo() {
   const ObtenerGameID = async () => {
     try {
       const PORT = 3000;
-      const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
+      const response_game = await fetch(`https://backend-catan.onrender.com/game`);
       const data_game = await response_game.json();
       const game_id = data_game.id;
       return game_id;
@@ -86,7 +86,7 @@ function Tablero_completo() {
           setImagen(imagenes[2]);
         }
 
-        const postResponse = await fetch(`https://catan-simple-backend.onrender.com/players/sumdice`, {
+        const postResponse = await fetch(`https://backend-catan.onrender.com/players/sumdice`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -114,14 +114,14 @@ function Tablero_completo() {
     try {
       const PORT = 3000;
       const game_id = await ObtenerGameID();
-      const recursos = await fetch(`https://catan-simple-backend.onrender.com/players/resources/${game_id}`, {
+      const recursos = await fetch(`https://backend-catan.onrender.com/players/resources/${game_id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
       const data_recurso = await recursos.json();
       if (data_recurso.wood >= 3 && data_recurso.clay >= 2 && data_recurso.wheat >= 1) {
-        const postResponse = await fetch(`https://catan-simple-backend.onrender.com/board/`, {
+        const postResponse = await fetch(`https://backend-catan.onrender.com/board/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -157,27 +157,27 @@ function Tablero_completo() {
        let nombre_entrante;
 
        //obtenemos el nombre del jugador saliente a partir del game_id
-       await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`)
+       await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`)
        .then(response => response.json())
         .then(data => {
           nombre_saliente = data.name;
         });
 
-       const cambioturno = await fetch(`https://catan-simple-backend.onrender.com/game/${game_id}`,{
+       const cambioturno = await fetch(`https://backend-catan.onrender.com/game/${game_id}`,{
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
 
         //obtenemos el nombre del jugador entrante a partir del game_id
-        await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`)
+        await fetch(`https://backend-catan.onrender.com/players/playername/${game_id}`)
         .then(response => response.json())
           .then(data => {
             nombre_entrante = data.name;
           });
 
        if (cambioturno.ok) {
-          await fetch(`https://catan-simple-backend.onrender.com/players/${game_id}`, {
+          await fetch(`https://backend-catan.onrender.com/players/${game_id}`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }
